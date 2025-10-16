@@ -11,4 +11,4 @@ npm start
 ```
 
 2. Open http://localhost:8080
-3. Open developer console.
+3. Open the browser console to see the output of the snippets.
