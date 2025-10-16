@@ -1,8 +1,14 @@
 # JavaScript Event Loop demo
 
-Run:
+A JavaScript Event Loop demo app created for a presentation.
+
+## Get started
+
+1. Run
 ```
 npm ci
 npm start
 ```
-Open http://localhost:8080
+
+2. Open http://localhost:8080
+3. Open developer console.

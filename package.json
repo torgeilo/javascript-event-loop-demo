@@ -1,0 +1,23 @@
+{
+  "name": "@torgeilo/javascript-event-loop-demo",
+  "version": "1.0.0",
+  "description": "A JavaScript Event Loop demo app created for a presentation",
+  "main": "",
+  "type": "module",
+  "scripts": {
+    "serve": "http-server public -c-1",
+    "start": "npm run build && npm run assets && npm run serve",
+    "build": "esbuild highlight.js --bundle --outfile=public/highlight/highlight.js --minify --sourcemap",
+    "assets": "cp node_modules/highlight.js/styles/github.min.css public/highlight/highlight.css"
+  },
+  "author": "Torgeir Lorange Østby",
+  "license": "BSD-3-Clause",
+  "devDependencies": {
+    "esbuild": "^0.25.10",
+    "highlight.js": "^11.11.1",
+    "http-server": "^14.1.1"
+  },
+  "prettier": {
+    "printWidth": 100
+  }
+}

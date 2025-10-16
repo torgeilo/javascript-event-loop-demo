@@ -1,0 +1,83 @@
+<!doctype html>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="highlight/highlight.css" />
+<link rel="stylesheet" type="text/css" href="styles.css" />
+<script type="module" src="highlight/highlight.js"></script>
+<title>JavaScript Event Loop Demo</title>
+
+<select>
+  <option value="snippets/synchronous.js">Synchronous</option>
+  <option value="snippets/alert.js">Alert</option>
+  <option value="snippets/timeout.js">Timeout</option>
+  <option value="snippets/multiple-timeouts.js">Multiple timeouts</option>
+  <option value="snippets/event.js">Event</option>
+  <option value="snippets/promise-basics.js">Promise basics</option>
+  <option value="snippets/promise-constructor.js">Promise constructor</option>
+  <option value="snippets/promise-await.js">Promise await</option>
+  <option value="snippets/promise-async-func.js">Promise async function</option>
+  <option value="snippets/promise-uncaught-error.js">Promise uncaught error</option>
+  <option value="snippets/busy-wait-task.js">Busy wait with tasks</option>
+  <option value="snippets/busy-wait-microtask.js">Busy wait with microtasks</option>
+</select>
+
+<div class="buttons">
+  <button class="reload">Reload</button>
+  <button class="run">Run</button>
+</div>
+
+<pre class="code"></pre>
+
+<div class="steps">
+  <h2>Steps (manual)</h2>
+  <h3>Agent</h3>
+  <pre contenteditable class="code"></pre>
+  <h3>Task queue</h3>
+  <pre contenteditable class="code"></pre>
+  <h3>Microtask queue</h3>
+  <pre contenteditable class="code"></pre>
+  <h3>Console</h3>
+  <pre contenteditable class="code"></pre>
+</div>
+
+<img src="animation.gif" width="200" height="200" alt="" class="animation" />
+
+<img src="event-loop.png" height="200" alt="" class="eventloop" />
+
+<script type="module">
+  async function loadSnippet(url) {
+    try {
+      const response = await fetch(url);
+      if (response.status !== 200) {
+        throw new Error(`Unexpected response code: ${response.status}`);
+      }
+      const snippet = await response.text();
+
+      document.querySelector(".code").innerHTML = highlight(snippet);
+      document.querySelector(".run").onclick = new Function(`(async () => { ${snippet} })()`);
+    } catch (error) {
+      console.error("Failed to load snippet:", error);
+    }
+  }
+
+  const select = document.querySelector("select");
+
+  select.onchange = (event) => {
+    console.clear();
+    document.querySelectorAll(".steps pre").forEach((pre) => (pre.textContent = ""));
+
+    loadSnippet(select.value);
+  };
+
+  document.querySelector(".reload").onclick = () => {
+    console.clear();
+    loadSnippet(select.value);
+  };
+
+  loadSnippet(select.value);
+
+  document.querySelectorAll("h3").forEach((heading) =>
+    heading.addEventListener("click", (event) => {
+      event.target.nextElementSibling.textContent = "";
+    }),
+  );
+</script>
