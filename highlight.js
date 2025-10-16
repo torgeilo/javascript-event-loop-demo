@@ -1,4 +1,4 @@
-// Make highlight.js available on window, for use on the page.
+// Make JavaScript highlighting available for use on the page.
 
 import core from "highlight.js/lib/core";
 import javascript from "highlight.js/lib/languages/javascript";
