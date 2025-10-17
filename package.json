@@ -1,7 +1,7 @@
 {
   "name": "@torgeilo/javascript-event-loop-demo",
   "version": "1.0.0",
-  "description": "A JavaScript Event Loop demo app created for a presentation",
+  "description": "A JavaScript Event Loop demo app",
   "main": "",
   "type": "module",
   "scripts": {

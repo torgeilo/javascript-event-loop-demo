@@ -1,6 +1,7 @@
 # JavaScript Event Loop demo
 
-A JavaScript Event Loop demo app created for a presentation.
+Created for demoing and explaining the JavaScript Event Loop in combination with
+a presentation.
 
 ## Get started
 
