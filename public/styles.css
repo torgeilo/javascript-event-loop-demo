@@ -1,5 +1,5 @@
 :root {
-  --thickness: 1.25vw;
+  --thickness: min(1em, 1vw);
   --border-color: #f5f5f5;
 }
 
@@ -8,8 +8,8 @@ body {
   font-family: sans-serif;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: calc(2 * var(--thickness));
-  margin: calc(2 * var(--thickness));
+  gap: calc(1.5 * var(--thickness));
+  margin: calc(1.5 * var(--thickness));
 }
 
 button,
